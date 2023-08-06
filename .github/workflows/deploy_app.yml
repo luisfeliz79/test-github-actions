@@ -39,6 +39,6 @@ jobs:
         run: |
           echo "Workflow start"
           echo "Authenticate Azure CLI"
-          az login --service-principal --allow-no-subscriptions --tenant $AZURE_TENANT_ID -u $AZURE_CLIENT_ID -p '$AZURE_CLIENT_SECRET'
+          az login --service-principal --allow-no-subscriptions --tenant $AZURE_TENANT_ID -u $AZURE_CLIENT_ID -p=$AZURE_CLIENT_SECRET
           echo "Running Script"
           pwsh -file deploy-aws-single-account-devops.ps1
