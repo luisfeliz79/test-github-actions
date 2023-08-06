@@ -7,6 +7,18 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env:
+  APP_DISPLAY_NAME:   ${{ var.APP_DISPLAY_NAME }}
+  SYNC_CLIENT_SECRET: ${{ secrets.SYNC_CLIENT_SECRET }}
+  SYNC_SECRET_TOKEN:  ${{ secrets.SYNC_SECRET_TOKEN }}
+  APP_IDENTIFIER_URI: ${{ var.APP_IDENTIFIER_URI }}
+
+# NOTE:
+# Configure the following enviroment variables to authenticate Azure CLI
+#    AZURE_CLIENT_ID
+#    AZURE_CLIENT_SECRET
+#    AZURE_TENANT_ID
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -25,5 +37,5 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Add other actions to build,
-          pwsh -command "dir"
+          echo "Workflow start",
+          pwsh -file deploy-aws-single-account-devops.ps1
