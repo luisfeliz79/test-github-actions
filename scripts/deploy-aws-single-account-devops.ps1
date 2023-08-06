@@ -1,7 +1,11 @@
 # AWS Single Account SSO Deployment script
 
-# This is the AWS Single account guide document
-# https://learn.microsoft.com/en-us/azure/active-directory/saas-apps/amazon-web-service-tutorial
+# NOTES:
+#   This is the AWS Single account guide document
+#      https://learn.microsoft.com/en-us/azure/active-directory/saas-apps/amazon-web-service-tutorial
+#   API References:
+#      https://learn.microsoft.com/en-us/graph/application-saml-sso-configure-api?tabs=http%2Cpowershell-script
+#      https://learn.microsoft.com/en-us/graph/api/resources/serviceprincipal?view=graph-rest-1.0
 
 
 # New Application Details
@@ -194,7 +198,7 @@ function Set-ApplicationProvisioning {
         Write-error "There was an error creating the Sync Job"
         Write-error $_.Exception.Message
         
-        exit
+        exit 1
     }
 
     
@@ -224,7 +228,7 @@ function Set-ApplicationProvisioning {
     catch {
         Write-error "There was an error adding secrets to the Sync Job"
         Write-error $_.Exception.Message
-        exit
+        exit 1
     }
 
     <#
@@ -244,7 +248,7 @@ function Set-ApplicationProvisioning {
     catch {
         Write-error "There was an error validating the credentials"
         Write-error $_.Exception.Message
-        exit
+        exit 1
     }
     #>
 
@@ -259,7 +263,7 @@ function Set-ApplicationProvisioning {
     catch {
         Write-error "There was an error starting the Sync Job"
         Write-error $_.Exception.Message
-        exit
+        exit 1
     }
 
 }
@@ -293,7 +297,7 @@ function Set-ApplicationSamlSSO {
     catch {
         Write-error "There was an error reading the service principal"
         Write-error $_.Exception.Message
-        exit
+        exit 1
     }
 
 
@@ -312,7 +316,7 @@ function Set-ApplicationSamlSSO {
     catch {
         Write-error "There was an error setting the SSO mode"
         Write-error $_.Exception.Message
-        exit
+        exit 1
     }
     
     # Configure SAML SSO URLs  
@@ -340,7 +344,7 @@ function Set-ApplicationSamlSSO {
     catch {
         Write-error "There was an error setting the SAML SSO settings"
         Write-error $_.Exception.Message
-        exit
+        exit 1
     }
  
     # Configure SAML Signing Certificate
@@ -362,7 +366,7 @@ function Set-ApplicationSamlSSO {
         catch {
             Write-error "There was an error adding the SAML Signing Certificate"
             Write-error $_.Exception.Message
-            exit
+            exit 1
         }
     } else {
         write-warning "SSO Setup: Signing certs already exist, not adding a new one"
