@@ -14,10 +14,10 @@ env:
   APP_IDENTIFIER_URI: ${{ var.APP_IDENTIFIER_URI }}
 
 # NOTE:
-# Configure the following enviroment variables to authenticate Azure CLI
-#    AZURE_CLIENT_ID
-#    AZURE_CLIENT_SECRET
-#    AZURE_TENANT_ID
+# The following enviroment variables to authenticate Azure CLI
+  AZURE_CLIENT_ID:     ${{ secrets.AZURE_CLIENT_ID }}
+  AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  AZURE_TENANT_ID:     ${{ secrets.AZURE_TENANT_ID }}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
