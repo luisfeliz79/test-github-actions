@@ -8,10 +8,10 @@ on:
   workflow_dispatch:
 
 env:
-  APP_DISPLAY_NAME:   ${{ var.APP_DISPLAY_NAME }}
+  APP_DISPLAY_NAME:   ${{ vars.APP_DISPLAY_NAME }}
   SYNC_CLIENT_SECRET: ${{ secrets.SYNC_CLIENT_SECRET }}
   SYNC_SECRET_TOKEN:  ${{ secrets.SYNC_SECRET_TOKEN }}
-  APP_IDENTIFIER_URI: ${{ var.APP_IDENTIFIER_URI }}
+  APP_IDENTIFIER_URI: ${{ vars.APP_IDENTIFIER_URI }}
 
 # NOTE:
 # The following enviroment variables to authenticate Azure CLI
